@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toronto (Zone 5b) Vegetable Growing Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <header class="px-6 md:px-10 py-8">
+    <div class="max-w-6xl mx-auto flex items-start md:items-center justify-between gap-6 flex-col md:flex-row">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Toronto (Zone 5b) Vegetable Growing Guide</h1>
+        <p class="text-slate-600 mt-2">Optimized for <span class="font-semibold">Toronto, ON · USDA Zone 5b</span> — last frost ~<span class="font-semibold">May 9–15</span>, first frost ~<span class="font-semibold">Oct 5–10</span> (~150 frost‑free days).</p>
+      </div>
+      <div class="flex gap-3 noprint">
+        <button onclick="window.print()" class="px-4 py-2 rounded-2xl bg-slate-900 text-white shadow hover:opacity-90">Print</button>
+        <a href="#calendar" class="px-4 py-2 rounded-2xl bg-white border border-slate-300 shadow hover:bg-slate-100">Jump to Calendar</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="px-6 md:px-10 pb-16">
+    <div class="max-w-6xl mx-auto space-y-10">
+
+      <!-- Legend -->
+      <section class="card bg-white rounded-3xl shadow p-6">
+        <h2 class="text-xl font-semibold mb-4">Legend</h2>
+        <div class="flex flex-wrap items-center gap-4 text-sm">
+          <span class="inline-flex items-center gap-2"><span class="w-4 h-3 rounded bg-blue-200 border border-blue-500"></span> 🟦 Cool-season (10–20 °C)</span>
+          <span class="inline-flex items-center gap-2"><span class="w-4 h-3 rounded bg-green-200 border border-green-600"></span> 🟩 Moderate (15–25 °C)</span>
+          <span class="inline-flex items-center gap-2"><span class="w-4 h-3 rounded bg-orange-200 border border-orange-500"></span> 🟧 Warm-season (18–30+ °C)</span>
+          <span class="inline-flex items-center gap-2 ml-6"><span class="w-6 h-[14px] bar bar-sow"></span> Sow/Transplant</span>
+          <span class="inline-flex items-center gap-2"><span class="w-6 h-[14px] bar bar-harvest"></span> Harvest Window</span>
+          <span class="inline-flex items-center gap-2"><span class="w-6 h-[14px] bar bar-overwinter"></span> Overwinter Growth</span>
+        </div>
+      </section>
+
+      <!-- Filters -->
+      <section class="card bg-white rounded-3xl shadow p-6">
+        <div class="flex flex-col md:flex-row md:items-end gap-4">
+          <div class="grow">
+            <label class="block text-sm font-medium text-slate-600">Quick Search</label>
+            <input id="search" type="search" placeholder="Search plants…" class="mt-1 w-full rounded-2xl border border-slate-300 px-4 py-2 outline-none focus:ring-2 focus:ring-slate-300">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-600">Trellis</label>
+            <select id="trellisFilter" class="mt-1 rounded-2xl border border-slate-300 px-4 py-2">
+              <option value="all">All</option>
+              <option value="yes">Requires</option>
+              <option value="no">Not required</option>
+              <option value="optional">Optional/Depends</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Data Table -->
+      <section class="card bg-white rounded-3xl shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-semibold">Planting Table (sorted by sow month)</h2>
+          <span class="text-sm text-slate-500">Toronto · Zone 5b</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table id="guideTable" class="min-w-full text-sm">
+            <thead class="bg-slate-100 text-slate-700">
+              <tr>
+                <th class="text-left px-3 py-2">Plant</th>
+                <th class="text-left px-3 py-2">Sow Method</th>
+                <th class="text-left px-3 py-2">Sow Month</th>
+                <th class="text-left px-3 py-2">Harvesting Time</th>
+                <th class="text-left px-3 py-2">Watering Interval</th>
+                <th class="text-left px-3 py-2">Fertilizer Needs</th>
+                <th class="text-left px-3 py-2">Sun Requirement</th>
+                <th class="text-left px-3 py-2">Trellis Required</th>
+                <th class="text-left px-3 py-2">Temperature Range</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Calendar -->
+      <section id="calendar" class="card bg-white rounded-3xl shadow p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-semibold">Month-by-Month Planting & Harvest Calendar</h2>
+          <span class="text-sm text-slate-500">Sow = green bars · Harvest = amber bars</span>
+        </div>
+
+        <div class="month-grid text-xs font-semibold text-slate-600 month-header rounded-2xl px-3 py-2">
+          <div>Plant</div>
+          <div class="text-center">Mar</div>
+          <div class="text-center">Apr</div>
+          <div class="text-center">May</div>
+          <div class="text-center">Jun</div>
+          <div class="text-center">Jul</div>
+          <div class="text-center">Aug</div>
+          <div class="text-center">Sep</div>
+          <div class="text-center">Oct</div>
+          <div class="text-center">Nov–Feb</div>
+        </div>
+        <div id="calendarRows" class="mt-2 space-y-2"></div>
+      </section>
+
+      <footer class="text-xs text-slate-500 pt-2">This guide is generalized for Toronto (Zone 5b). Microclimates vary — always check soil temperature and local frost advisories.</footer>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
