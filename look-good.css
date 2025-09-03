@@ -1,0 +1,84 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.card {
+  border: 1px solid #e2e8f0;
+}
+
+/* Calendar grid */
+.month-grid {
+  display: grid;
+  grid-template-columns: 160px repeat(8, 1fr) 1.2fr;
+  align-items: center;
+}
+
+.month-row {
+  display: grid;
+  grid-template-columns: 160px repeat(8, 1fr) 1.2fr;
+  align-items: center;
+}
+
+.bar {
+  display: block;
+  height: 14px;
+  border-radius: 9999px;
+}
+
+.bar-sow {
+  background-color: #4ade80; /* green-400 */
+  border: 1px solid #16a34a; /* green-600 */
+}
+
+.bar-harvest {
+  background-color: #fbbf24; /* amber-400 */
+  border: 1px solid #d97706; /* amber-600 */
+}
+
+.bar-overwinter {
+  background-color: #60a5fa; /* blue-400 */
+  border: 1px solid #2563eb; /* blue-600 */
+}
+
+/* Table styling */
+#guideTable th {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+#guideTable td {
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+}
+
+/* Temperature badges */
+.temp-cool {
+  background-color: #bfdbfe;
+  border: 1px solid #3b82f6;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+.temp-moderate {
+  background-color: #bbf7d0;
+  border: 1px solid #16a34a;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+.temp-warm {
+  background-color: #fed7aa;
+  border: 1px solid #f97316;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+/* Print styles */
+@media print {
+  .noprint { display: none; }
+  body { background: white; }
+  .card { box-shadow: none; border: none; }
+}
